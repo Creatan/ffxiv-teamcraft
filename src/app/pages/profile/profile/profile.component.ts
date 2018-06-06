@@ -18,6 +18,8 @@ import {catchError, filter, map, mergeMap} from 'rxjs/operators';
 import {StatsEditPopupComponent} from '../stats-edit-popup/stats-edit-popup.component';
 import {ConfirmationPopupComponent} from '../../../modules/common-components/confirmation-popup/confirmation-popup.component';
 import {combineLatest, of} from 'rxjs';
+import { StatsImportPopupComponent } from '../stats-import-popup/stats-import-popup.component';
+import * as JSZip from 'jszip'
 
 @Component({
     selector: 'app-profile',
@@ -112,6 +114,20 @@ export class ProfileComponent extends PageComponent {
 
     public openStatsPopup(set: GearSet): void {
         this.dialog.open(StatsEditPopupComponent, {data: set});
+    }
+    public triggerStatsImportUpload(): void {
+        //this.dialog.open(StatsImportPopupComponent, {data:{sets: this.jobs}})
+    }
+    public importStats($event:any): void {
+        console.log($event.target.files)
+        const file = $event.target.files[0]
+        JSZip.loadAsync(file).then(zip => {
+            //get filecontents
+            zip.file('settings.json').async("text").then(contents => {
+                const importData = JSON.parse(contents)
+                console.log(importData.crafterStats)
+            })
+        })
     }
 
     changeCharacter(): void {

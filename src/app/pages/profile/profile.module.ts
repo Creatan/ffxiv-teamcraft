@@ -29,6 +29,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PatreonLinkPopupComponent } from './patreon-link-popup/patreon-link-popup.component';
 import { NicknamePopupComponent } from './nickname-popup/nickname-popup.component';
 import { StatsEditPopupComponent } from './stats-edit-popup/stats-edit-popup.component';
+import { StatsImportPopupComponent } from './stats-import-popup/stats-import-popup.component';
 
 const routes: Routes = [{
     path: 'profile',
@@ -76,6 +77,7 @@ const routes: Routes = [{
         PatreonLinkPopupComponent,
         NicknamePopupComponent,
         StatsEditPopupComponent,
+        StatsImportPopupComponent,
     ],
     providers: [
         ProfileGuard,
@@ -88,6 +90,7 @@ const routes: Routes = [{
         PatreonLinkPopupComponent,
         NicknamePopupComponent,
         StatsEditPopupComponent,
+        StatsImportPopupComponent
     ]
 })
 export class ProfileModule {

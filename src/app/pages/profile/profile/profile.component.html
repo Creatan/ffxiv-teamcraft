@@ -20,6 +20,10 @@
                             <mat-icon>edit</mat-icon>
                         </button>
                         </span>
+                        <button (click)="statUpload.click()" mat-icon-button>
+                            <mat-icon>input</mat-icon>
+                        </button>
+                        <input hidden #statUpload type="file" (change)="importStats($event)" /> 
                     </mat-card-title>
                     <mat-card-subtitle>{{character.title}}</mat-card-subtitle>
                     <div class="spacer"></div>
